@@ -376,6 +376,8 @@ class Shield(pygame.sprite.Sprite):
 
     def update(self, *args):
         time = self.timer.tick()
+        if time > 1000:
+            time = self.timer.tick()
         self.new_coord = self.new_coord + 100 * time / 1000
         self.rect.y = int(self.new_coord)
         if self.rect.y > 600:
@@ -390,10 +392,13 @@ class HeatRemover(pygame.sprite.Sprite):
         self.image = HeatRemover.image
         self.rect = self.image.get_rect().move((random.randrange(30, 770), 0))
         self.timer = pygame.time.Clock()
+
         self.new_coord = self.rect.y
 
     def update(self, *args):
         time = self.timer.tick()
+        if time > 1000:
+            time = self.timer.tick()
         self.new_coord = self.new_coord + 100 * time / 1000
         self.rect.y = int(self.new_coord)
         if self.rect.y > 600:
@@ -412,6 +417,8 @@ class Heart(pygame.sprite.Sprite):
 
     def update(self, *args):
         time = self.timer.tick()
+        if time > 1000:
+            time = self.timer.tick()
         self.new_coord = self.new_coord + 100 * time / 1000
         self.rect.y = int(self.new_coord)
         if self.rect.y > 600:
@@ -440,7 +447,6 @@ music.play(-1)
 timer = 0
 global_timer = 0
 font = pygame.font.Font(None, 100)
-random_bonus()
 bonus_timer = 0
 while running:
     screen.blit(hp, (0, 600))
@@ -485,7 +491,8 @@ while running:
                 player = Player()
                 timer = 0
                 global_timer = 0
-                spawn_clock.tick()
+            spawn_clock.tick()
+            clock.tick()
             screen = pygame.display.set_mode((800, 600))
             bullet_group.update(True)
             clock.tick()

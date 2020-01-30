@@ -227,8 +227,8 @@ class Player(pygame.sprite.Sprite):
 
 
 class Bullet(pygame.sprite.Sprite):
-    image = pygame.transform.scale(load_image('bullet.png'), (4, 9))
-    image2 = pygame.transform.scale(load_image('bullet2.png'), (4, 9))
+    image = pygame.transform.scale(load_image('bullet.png'), (4, 35))
+    image2 = pygame.transform.scale(load_image('bullet2.png'), (4, 35))
 
     def __init__(self, x, y, group, x1, y1):
         super().__init__(all_sprites, group)
